@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="2026 紐約法會影片規劃：廣福組、護老組與文教組拍攝規劃入口。">
+  <title>2026 紐約法會影片規劃</title>
+  <style>
+    :root {
+      --ink: #23343d;
+      --muted: #69747a;
+      --paper: #f5f0e8;
+      --card: rgba(255, 253, 248, .92);
+      --line: #d9d0c3;
+      --rose: #b56b65;
+      --teal: #4f7574;
+      --gold: #b48a4d;
+      --plum: #75596f;
+      --shadow: 0 18px 48px rgba(42, 48, 50, .11);
+      --radius: 25px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 89% 7%, rgba(79,117,116,.14), transparent 28rem),
+        radial-gradient(circle at 8% 34%, rgba(180,138,77,.11), transparent 27rem),
+        linear-gradient(180deg, #fcfaf6 0%, var(--paper) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 20;
+      padding: .75rem 1rem;
+      color: white;
+      background: var(--ink);
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; }
+    .shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      min-height: 560px;
+      display: grid;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      right: -110px;
+      top: -190px;
+      border-radius: 44% 56% 50% 50%;
+      background: rgba(79,117,116,.12);
+      transform: rotate(19deg);
+    }
+    header::after {
+      content: "2026";
+      position: absolute;
+      right: 4vw;
+      bottom: -5.2rem;
+      color: rgba(35,52,61,.035);
+      font-family: Georgia, serif;
+      font-size: clamp(9rem, 23vw, 20rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 5.6rem 0 4.8rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1rem;
+      color: var(--rose);
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 2rem; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 900px;
+      margin-bottom: 1.35rem;
+      font-family: "Songti TC", "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(3.3rem, 7.5vw, 6.8rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+    .lead {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: #4d5a60;
+      font-size: clamp(1rem, 1.55vw, 1.18rem);
+    }
+
+    main { padding: 4.8rem 0 6.5rem; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: end;
+      margin-bottom: 1.7rem;
+    }
+    .section-head h2 {
+      margin-bottom: .35rem;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.1;
+    }
+    .section-head p { margin-bottom: 0; color: var(--muted); }
+    .count {
+      color: var(--teal);
+      font-family: Georgia, serif;
+      font-size: 3.6rem;
+      line-height: 1;
+      font-style: italic;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .unit-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.7rem;
+      border: 1px solid rgba(35,52,61,.11);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .unit-card:hover,
+    .unit-card:focus-visible {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 58px rgba(42,48,50,.16);
+      outline: none;
+    }
+    .unit-card::after {
+      content: attr(data-no);
+      position: absolute;
+      right: -.25rem;
+      bottom: -2.8rem;
+      color: rgba(35,52,61,.045);
+      font-family: Georgia, serif;
+      font-size: 11rem;
+      line-height: 1;
+      font-style: italic;
+      pointer-events: none;
+    }
+    .card-top { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+    .number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: white;
+      background: var(--teal);
+      font-weight: 850;
+    }
+    .unit-card:nth-child(2) .number { background: var(--plum); }
+    .unit-card:nth-child(3) .number { background: var(--gold); }
+    .status {
+      padding: .3rem .65rem;
+      border-radius: 999px;
+      color: #416261;
+      background: #e3ece9;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+    .unit-card h3 {
+      margin: 2.1rem 0 .65rem;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: 2.35rem;
+      line-height: 1.08;
+    }
+    .unit-card p { color: var(--muted); }
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .2rem;
+    }
+    .topic {
+      padding: .26rem .58rem;
+      border-radius: 999px;
+      color: #526165;
+      background: #f0ebe3;
+      font-size: .76rem;
+      font-weight: 750;
+    }
+    .open {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-top: auto;
+      padding-top: 1.4rem;
+      color: var(--ink);
+      font-weight: 850;
+    }
+    .open span { transition: transform .18s ease; }
+    .unit-card:hover .open span { transform: translateX(4px); }
+
+    .note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      margin-top: 2rem;
+      padding: 1.2rem 1.35rem;
+      border-left: 4px solid var(--rose);
+      border-radius: 0 15px 15px 0;
+      background: rgba(255,253,248,.76);
+      color: #596368;
+    }
+    .note strong { color: var(--ink); }
+    footer { padding: 0 0 3rem; color: var(--muted); font-size: .86rem; }
+
+    @media (max-width: 850px) {
+      .unit-grid { grid-template-columns: 1fr; }
+      .unit-card { min-height: 320px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      header { min-height: 520px; }
+      .hero { padding-top: 4rem; }
+      h1 { font-size: clamp(3rem, 16vw, 4.8rem); }
+      .section-head { grid-template-columns: 1fr; }
+      .count { font-size: 2.7rem; }
+      .unit-card { padding: 1.35rem; }
+      .unit-card h3 { font-size: 2rem; }
+      .note { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header>
+    <div class="hero shell">
+      <div class="eyebrow">New York · Video Planning</div>
+      <h1>2026 紐約法會<br>影片規劃</h1>
+      <p class="lead">這裡集中廣福、護老與文教三個單位的體驗式拍攝規劃。每一頁都依場景、體驗、內容、拍攝注意與目前缺口四格整理，方便拍攝團隊與當地夥伴一起確認。</p>
+    </div>
+  </header>
+
+  <main class="shell" id="main">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Planning Index</div>
+        <h2>選擇單位</h2>
+        <p>點進單位頁面，即可閱讀目前的場景規劃與拍攝前待確認事項。</p>
+      </div>
+      <div class="count" aria-label="三個單位">03</div>
+    </div>
+
+    <div class="unit-grid">
+      <a class="unit-card" data-no="1" href="./guangfu/">
+        <div class="card-top"><span class="number">1</span><span class="status">四格規劃</span></div>
+        <h3>廣福組</h3>
+        <p>跟著真實工作走：心田總店出貨與商品故事、有機小農田取菜，以及心田二店有機茶席。</p>
+        <div class="topics"><span class="topic">心田總店</span><span class="topic">有機小農田</span><span class="topic">有機茶席</span></div>
+        <div class="open">開啟廣福組規劃 <span aria-hidden="true">→</span></div>
+      </a>
+
+      <a class="unit-card" data-no="2" href="./elder-care/">
+        <div class="card-top"><span class="number">2</span><span class="status">四格規劃</span></div>
+        <h3>護老組</h3>
+        <p>跟著關懷員走進長者家中，從出發、陪伴、道別到回程整理，留下彼此真實相處的樣子。</p>
+        <div class="topics"><span class="topic">居家訪視</span><span class="topic">彼此陪伴</span><span class="topic">觀功念恩</span></div>
+        <div class="open">開啟護老組規劃 <span aria-hidden="true">→</span></div>
+      </a>
+
+      <a class="unit-card" data-no="3" href="./education/">
+        <div class="card-top"><span class="number">3</span><span class="status">四格規劃</span></div>
+        <h3>文教組</h3>
+        <p>怡伶以協助老師的身分加入幸福生活工作坊與兒童讀經班，從孩子當天的反應聊老師怎麼學、怎麼帶。</p>
+        <div class="topics"><span class="topic">幸福生活工作坊</span><span class="topic">兒童讀經班</span><span class="topic">年輕老師</span></div>
+        <div class="open">開啟文教組規劃 <span aria-hidden="true">→</span></div>
+      </a>
+    </div>
+
+    <div class="note">
+      <strong>目前範圍</strong>
+      <span>本入口先收錄已完成場景式拍攝規劃的三個單位。其他單位確認內容後，可以沿用同一層級增加入口，不會改變現有網址。</span>
+    </div>
+  </main>
+
+  <footer class="shell">2026 紐約法會影片規劃 · 分享閱讀版 · 2026-08-24</footer>
+</body>
+</html>
+
