@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>紐約憶師恩｜淨智組兩場景體驗式拍攝規劃</title>
+  <style>
+    :root {
+      --ink: #20343d;
+      --muted: #657176;
+      --paper: #f3efe7;
+      --paper-2: #fffdf8;
+      --line: #d9d0c3;
+      --teal: #476e70;
+      --coral: #b8685d;
+      --ochre: #b88a44;
+      --soft-teal: #e2ece9;
+      --soft-coral: #f4dfda;
+      --soft-ochre: #f2e6ce;
+      --shadow: 0 15px 38px rgba(38, 50, 52, .11);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 6%, rgba(71,110,112,.13), transparent 29rem),
+        radial-gradient(circle at 6% 27%, rgba(184,138,68,.10), transparent 25rem),
+        linear-gradient(180deg, #fbf8f2 0%, var(--paper) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      padding: .7rem 1rem;
+      color: white;
+      background: var(--ink);
+      z-index: 30;
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 470px;
+      height: 470px;
+      right: -120px;
+      top: -170px;
+      border-radius: 44% 56% 48% 52%;
+      background: rgba(71,110,112,.11);
+      transform: rotate(17deg);
+    }
+    .hero-inner,
+    main,
+    .nav-inner,
+    footer {
+      width: min(1180px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+      padding: 5.4rem 0 4.6rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.1rem;
+      color: var(--coral);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 2rem; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 1.25rem;
+      font-family: "Songti TC", "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(3.15rem, 7vw, 6rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+    .hero-copy {
+      max-width: 690px;
+      color: #46555b;
+      font-size: clamp(1rem, 1.5vw, 1.17rem);
+    }
+    .hero-note {
+      margin-top: 1.7rem;
+      padding: 1rem 1.2rem;
+      border-left: 4px solid var(--coral);
+      border-radius: 0 14px 14px 0;
+      background: rgba(255,255,255,.68);
+      color: #555e62;
+    }
+    .schedule-board { display: grid; gap: 1rem; }
+    .schedule-card {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.2rem;
+      border: 1px solid rgba(32,52,61,.10);
+      border-radius: 18px;
+      background: rgba(255,253,248,.92);
+      box-shadow: var(--shadow);
+    }
+    .schedule-card:nth-child(2) { transform: translateX(18px); }
+    .schedule-no {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      background: var(--teal);
+      font-weight: 800;
+    }
+    .schedule-card.alert .schedule-no { background: var(--coral); }
+    .schedule-card strong { display: block; font-size: 1.02rem; }
+    .schedule-card span { display: block; color: var(--muted); font-size: .87rem; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      background: rgba(243,239,231,.95);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      display: flex;
+      gap: .55rem;
+      min-width: max-content;
+      padding: .7rem 0;
+    }
+    .nav a {
+      padding: .55rem .85rem;
+      border-radius: 999px;
+      color: #59666a;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .nav a:hover,
+    .nav a:focus-visible { color: var(--ink); background: white; }
+
+    main { padding: 4.5rem 0 6rem; }
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.76);
+    }
+    .principles h2,
+    .scene h2 {
+      margin-bottom: .55rem;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.1;
+    }
+    .principles p { margin-bottom: 0; color: var(--muted); }
+    .principle-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    .principle-item {
+      padding: .8rem .9rem;
+      border-radius: 13px;
+      background: white;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .scene { scroll-margin-top: 5rem; }
+    .scene + .scene { margin-top: 6rem; }
+    .scene-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 3px solid var(--teal);
+    }
+    .scene:nth-of-type(3) .scene-head { border-bottom-color: var(--ochre); }
+    .scene-index {
+      color: var(--teal);
+      font-family: Georgia, serif;
+      font-size: 3.7rem;
+      line-height: .85;
+      font-style: italic;
+    }
+    .scene:nth-of-type(3) .scene-index { color: var(--ochre); }
+    .scene-kicker {
+      margin-bottom: .15rem;
+      color: var(--coral);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+    }
+    .scene h2 { margin-bottom: 0; }
+    .four-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .cell {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+      padding: 1.55rem 1.6rem 1.45rem;
+      border: 1px solid rgba(32,52,61,.10);
+      border-radius: var(--radius);
+      background: var(--paper-2);
+      box-shadow: 0 8px 26px rgba(38,50,52,.07);
+    }
+    .cell::after {
+      content: attr(data-no);
+      position: absolute;
+      right: -3px;
+      bottom: -31px;
+      color: rgba(32,52,61,.045);
+      font-family: Georgia, serif;
+      font-size: 9rem;
+      line-height: 1;
+      font-style: italic;
+      pointer-events: none;
+    }
+    .cell:nth-child(4) {
+      border-color: rgba(184,104,93,.27);
+      background: linear-gradient(145deg, var(--soft-coral), #fffdf8 67%);
+    }
+    .cell-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .7rem;
+      color: var(--teal);
+      font-size: .73rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .cell-label::before {
+      content: attr(data-no);
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      color: white;
+      background: var(--teal);
+      letter-spacing: 0;
+    }
+    .scene:nth-of-type(3) .cell-label { color: #8b682f; }
+    .scene:nth-of-type(3) .cell-label::before { background: var(--ochre); }
+    .cell h3 { margin-bottom: .75rem; font-size: 1.28rem; line-height: 1.35; }
+    ul { margin: .35rem 0 0; padding-left: 1.2rem; }
+    li { margin-bottom: .45rem; }
+    li::marker { color: var(--coral); }
+    .subhead {
+      margin: 1rem 0 .3rem;
+      color: var(--teal);
+      font-size: .83rem;
+      font-weight: 900;
+    }
+    .scene:nth-of-type(3) .subhead { color: #8b682f; }
+    .quote {
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-left: 3px solid var(--coral);
+      border-radius: 0 10px 10px 0;
+      background: var(--soft-coral);
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: 1.02rem;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .tag {
+      padding: .28rem .62rem;
+      border-radius: 999px;
+      color: var(--teal);
+      background: var(--soft-teal);
+      font-size: .78rem;
+      font-weight: 800;
+    }
+    .scene:nth-of-type(3) .tag { color: #7b5c2d; background: var(--soft-ochre); }
+
+    footer { padding: 0 0 3rem; color: var(--muted); font-size: .85rem; }
+
+    @media (max-width: 800px) {
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 4rem; }
+      .schedule-card:nth-child(n) { transform: none; }
+      .principles { grid-template-columns: 1fr; padding: 1.35rem; }
+      .four-grid { grid-template-columns: 1fr; }
+      .cell { min-height: auto; }
+    }
+    @media (max-width: 520px) {
+      .hero-inner, main, .nav-inner, footer { width: min(100% - 28px, 1180px); }
+      h1 { font-size: clamp(2.7rem, 15vw, 4.1rem); }
+      .hero-copy { font-size: 1rem; }
+      .schedule-card { grid-template-columns: 40px 1fr; padding: 1rem; }
+      .schedule-no { width: 40px; height: 40px; }
+      main { padding-top: 2.8rem; }
+      .principle-list { grid-template-columns: 1fr; }
+      .scene-head { grid-template-columns: 1fr; gap: .5rem; }
+      .scene-index { font-size: 2.8rem; }
+      .cell { padding: 1.25rem 1.2rem; }
+    }
+    @media print {
+      .nav, .skip-link { display: none; }
+      body { background: white; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 2rem 0; }
+      .cell, .principles, .schedule-card { box-shadow: none; break-inside: avoid; }
+    }
+    .site-home {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 40;
+      padding: .65rem .9rem;
+      border: 1px solid rgba(32,52,61,.12);
+      border-radius: 999px;
+      background: rgba(255,253,248,.94);
+      box-shadow: 0 8px 24px rgba(32,52,61,.14);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+    @media print { .site-home { display: none; } }
+  </style>
+</head>
+<body>
+  <a class="site-home" href="../">← 返回總覽</a>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">New York · 憶師恩影片企劃</div>
+        <h1>淨智組<br>兩場景拍攝規劃</h1>
+        <p class="hero-copy">怡伶先跟著張一帆師兄上完一堂《廣論》研討班，再跟義工到空山寺或「873」做一次真正排定的護持。攝影師留在鏡頭後參與，內容從上課、分工和現場聊天裡帶出來。</p>
+        <p class="hero-note">兩場都要先問清楚再排：張一帆師兄目前是否仍在帶班；第二場由淨智組主責或由各組共同承擔；「873」的正式名稱、位置與拍攝許可也待確認。</p>
+      </div>
+      <div class="schedule-board" aria-label="淨智場景與待確認項目">
+        <div class="schedule-card"><div class="schedule-no">1</div><div><strong>《廣論》研討班</strong><span>班長、實體或混合上課｜時間地點待確認</span></div></div>
+        <div class="schedule-card alert"><div class="schedule-no">2</div><div><strong>空山寺或「873」護持</strong><span>場地、任務與淨智組角色待確認</span></div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="頁面導覽">
+    <div class="nav-inner">
+      <a href="#principles">拍攝原則</a>
+      <a href="#scene-class">《廣論》研討班</a>
+      <a href="#scene-support">空山寺或「873」護持</a>
+      <a href="#attention-support">注意與缺口</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="principles" id="principles">
+      <div>
+        <div class="eyebrow">Join first, talk after</div>
+        <h2>先把一堂課上完，也把當天的工作做完</h2>
+        <p>怡伶跟著現場原有安排參與。互動先從剛才發生的事問起，再請當事人自己談這份學習或護持和師父、老師有什麼關係。</p>
+      </div>
+      <div class="principle-list">
+        <div class="principle-item">怡伶是學員，也是義工</div>
+        <div class="principle-item">攝影師保留鏡頭後角色</div>
+        <div class="principle-item">不安排說明式旁白</div>
+        <div class="principle-item">從當天具體事情問起</div>
+        <div class="principle-item">當事人自己談師長理念</div>
+        <div class="principle-item">未確認資料清楚標示</div>
+      </div>
+    </section>
+
+    <section class="scene" id="scene-class">
+      <div class="scene-head">
+        <div class="scene-index">01</div>
+        <div><div class="scene-kicker">STUDY CLASS · CLASS LEADER · SHARING</div><h2>《廣論》研討班</h2></div>
+      </div>
+
+      <div class="four-grid">
+        <article class="cell" data-no="1">
+          <div class="cell-label" data-no="1">Scene</div>
+          <h3>在什麼場景</h3>
+          <ul>
+            <li>從張一帆師兄出發前的準備開始，跟著他前往紐約教室。</li>
+            <li>怡伶以第一次在紐約上課的學員身分加入研討班。</li>
+            <li>拍班長開場、同學研討、善行點滴、班長總結與下課，讓觀眾跟完一堂課。</li>
+            <li>若班上同時有線上同學，也保留實體與線上一起共學的樣子。</li>
+          </ul>
+          <div class="tag-row"><span class="tag">班長備課</span><span class="tag">研討分享</span><span class="tag">善行點滴</span></div>
+        </article>
+
+        <article class="cell" data-no="2">
+          <div class="cell-label" data-no="2">Experience</div>
+          <h3>可以體驗什麼</h3>
+          <div class="subhead">出發前與路上</div>
+          <ul>
+            <li>看班長帶了哪些講義或教材，聊他平常怎麼備課。</li>
+            <li>問他今天最掛心哪一段，班上有哪些同學需要多留意。</li>
+            <li>跟著準備座位、教材或線上設備。</li>
+          </ul>
+          <div class="subhead">上課中</div>
+          <ul>
+            <li>怡伶跟著大家聽課、研討，也參與善行點滴分享。</li>
+            <li>同學討論時，拍大家怎麼聽、怎麼接話，留下自然停頓和回應。</li>
+            <li>班長整理問題時，拍他如何回應同學。</li>
+          </ul>
+          <div class="subhead">下課後</div>
+          <ul>
+            <li>一起整理場地，再聊第一次在紐約上課的感受。</li>
+          </ul>
+        </article>
+
+        <article class="cell" data-no="3">
+          <div class="cell-label" data-no="3">Content</div>
+          <h3>有什麼樣的內容</h3>
+          <div class="subhead">班長怎麼準備一堂課</div>
+          <ul>
+            <li>從今天用到的教材談起，請班長說明怎麼準備、哪裡最花時間。</li>
+            <li>聊遇到同學沒有回應或討論卡住時，他會怎麼處理。</li>
+            <li>最後由班長自己說，這份帶班和師父、老師哪一個理念有關。</li>
+          </ul>
+          <div class="subhead">同學怎麼把法帶回生活</div>
+          <ul>
+            <li>善行點滴與研討可以呈現同學怎麼理解《廣論》，回到生活後又怎麼練習。</li>
+            <li>從一段具體分享繼續聊：這件事以前會怎麼做，現在有什麼不同。</li>
+            <li>班長和同學也可以說，今天從哪位同行身上看到值得學習的地方。</li>
+          </ul>
+          <div class="subhead">第一次在紐約上課</div>
+          <ul>
+            <li>怡伶分享自己實際坐進教室後看見了什麼。</li>
+            <li>攝影師補上鏡頭後觀察到的互動。</li>
+          </ul>
+          <p class="quote">先從今天哪一段最難準備、哪一段最有感開始聊，再問班長為什麼願意繼續陪這一班。</p>
+        </article>
+
+        <article class="cell" data-no="4" id="attention-class">
+          <div class="cell-label" data-no="4">Attention & gaps</div>
+          <h3>拍攝注意與目前缺口</h3>
+          <div class="subhead">拍攝注意</div>
+          <ul>
+            <li>先確認張一帆師兄目前是否仍有帶班，以及是否適合拍攝完整一堂課。</li>
+            <li>善行點滴若涉及家庭、健康或個人經歷，由同學決定哪些內容可以留下。</li>
+            <li>混合上課要先測試線上聲音，也要取得線上同學的拍攝同意。</li>
+            <li>不請同學重講分享，也不替同學預先整理答案。</li>
+            <li>拍攝配合班長原本的上課節奏。</li>
+          </ul>
+          <div class="subhead">目前缺少</div>
+          <ul>
+            <li>張一帆師兄是否仍在帶班；既有訪談資料記為「張一凡」，姓名用字待本人確認。</li>
+            <li>上課日期、時間、地點與實際參與人數。</li>
+            <li>班級是全實體、全線上，或實體與線上並行。</li>
+            <li>當天是一般《廣論》研討班，或以四十五攝頌搭配師父、老師開示的新班課程。</li>
+            <li>當天教材、研討流程與善行點滴安排。</li>
+            <li>班長、實體同學與線上同學的拍攝同意範圍。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene" id="scene-support">
+      <div class="scene-head">
+        <div class="scene-index">02</div>
+        <div><div class="scene-kicker">VOLUNTEERS · TEAMWORK · SERVICE</div><h2>空山寺或「873」護持活動</h2></div>
+      </div>
+
+      <div class="four-grid">
+        <article class="cell" data-no="1">
+          <div class="cell-label" data-no="1">Scene</div>
+          <h3>在什麼場景</h3>
+          <ul>
+            <li>從義工集合開始，跟著大家前往空山寺或「873」。</li>
+            <li>場地先選一處，讓拍攝能跟完集合、分工、工作與收拾。</li>
+            <li>當天可能是打掃、搬運、場地整理、法會前準備或其他已排定的工作。</li>
+            <li>怡伶加入分工，攝影師拍大家怎麼合作，也保留鏡頭後的互動。</li>
+          </ul>
+          <div class="tag-row"><span class="tag">義工集合</span><span class="tag">實際分工</span><span class="tag">工作後短聊</span></div>
+        </article>
+
+        <article class="cell" data-no="2">
+          <div class="cell-label" data-no="2">Experience</div>
+          <h3>可以體驗什麼</h3>
+          <div class="subhead">集合與說明</div>
+          <ul>
+            <li>跟著大家集合、搭車或在現場會合。</li>
+            <li>聽負責人說明今天要做什麼、怎麼分工，以及哪些區域可以拍。</li>
+            <li>從當天的任務開始聊：這件事為什麼需要大家一起來。</li>
+          </ul>
+          <div class="subhead">一起工作</div>
+          <ul>
+            <li>怡伶加入打掃、搬運、布置或當天安排的工作。</li>
+            <li>拍義工怎麼互相提醒、補位，也拍事情臨時改變時大家怎麼處理。</li>
+            <li>工作空檔可以問，大家合作多久了，為什麼做起來這麼順。</li>
+          </ul>
+          <div class="subhead">做完以後</div>
+          <ul>
+            <li>和兩三位義工或幹部短聊，再拍一次整理後的場地，和進場前的畫面對照。</li>
+          </ul>
+        </article>
+
+        <article class="cell" data-no="3">
+          <div class="cell-label" data-no="3">Content</div>
+          <h3>有什麼樣的內容</h3>
+          <div class="subhead">大家怎麼把事情做完</div>
+          <ul>
+            <li>從集合、分工到收尾，拍出義工之間已經形成的合作方式。</li>
+            <li>若大家很有默契，就從剛才一個動作問起：誰先發現問題，誰接著補上。</li>
+            <li>讓義工自己說，這份默契是怎麼一次次做出來的。</li>
+          </ul>
+          <div class="subhead">為什麼持續來護持</div>
+          <ul>
+            <li>問義工平常多久來一次、最常做什麼，今天為什麼願意排出時間。</li>
+            <li>若有早期參與空山寺建置的義工，可以從場地剛接下來、還缺桌椅和生活用品時談起。</li>
+            <li>由義工說明，這些工作如何讓法師、同學與法會活動能在當地繼續進行。</li>
+          </ul>
+          <div class="subhead">和師父、老師理念的關係</div>
+          <ul>
+            <li>工作結束後，再請大家說明自己做這件事時心裡放著什麼。</li>
+            <li>問他們從同行身上看見哪些值得學習的地方。</li>
+            <li>最後由當事人自己說，這份護持承接了師父、老師哪一個理念。</li>
+          </ul>
+          <p class="quote">先聊剛才誰幫了誰，再談大家為什麼願意一趟一趟回來。</p>
+        </article>
+
+        <article class="cell" data-no="4" id="attention-support">
+          <div class="cell-label" data-no="4">Attention & gaps</div>
+          <h3>拍攝注意與目前缺口</h3>
+          <div class="subhead">拍攝注意</div>
+          <ul>
+            <li>選一個真正有工作發生的日子，不為拍攝另外安排打掃或搬運。</li>
+            <li>若由紐約各組共同承擔，畫面與說法要如實交代，不把所有工作都歸在淨智組名下。</li>
+            <li>佛堂、法師生活空間與住眾動線先確認拍攝界線。</li>
+            <li>搬運、清潔或搭車途中以安全為先，不要求義工為鏡頭重做動作。</li>
+            <li>若只有一般打掃，可以找一項有明確開始與完成狀態的工作。</li>
+          </ul>
+          <div class="subhead">目前缺少</div>
+          <ul>
+            <li>淨智組近期護持的實際日期、地點與工作內容。</li>
+            <li>「873」的正式名稱、所在位置、用途與拍攝許可。</li>
+            <li>第二場選空山寺、「873」或其他場地，以及選擇理由。</li>
+            <li>當天由淨智組主責，或由紐約各組共同承擔。</li>
+            <li>淨智組是否希望用這個場景呈現日常護持與師長事業的關係。</li>
+            <li>當天負責分工的人，以及適合在工作後短聊的義工或幹部。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>紐約憶師恩影片企劃 · 淨智組兩場景規劃 v01 · 2026-08-24</footer>
+</body>
+</html>
