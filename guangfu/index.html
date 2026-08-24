@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>紐約憶師恩｜廣福組三場景體驗式拍攝規劃</title>
+  <style>
+    :root {
+      --ink: #17323a;
+      --muted: #5e6d6e;
+      --paper: #f7f1e5;
+      --paper-2: #fffdf8;
+      --line: #d8cfbd;
+      --coral: #c95f49;
+      --olive: #66754b;
+      --tea: #9a7046;
+      --blue: #4d7180;
+      --gold: #c59a4a;
+      --soft-coral: #f5dfd8;
+      --soft-green: #e7ecd9;
+      --soft-tea: #efe2d2;
+      --soft-blue: #dfeaec;
+      --shadow: 0 16px 40px rgba(44, 54, 48, .11);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 5%, rgba(197,154,74,.13), transparent 26rem),
+        linear-gradient(180deg, #fbf7ef 0%, var(--paper) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      padding: .7rem 1rem;
+      background: var(--ink);
+      color: white;
+      z-index: 30;
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 590px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 430px;
+      height: 430px;
+      right: -100px;
+      top: -110px;
+      background: rgba(102,117,75,.11);
+    }
+    .hero::after {
+      width: 320px;
+      height: 320px;
+      left: -140px;
+      bottom: -160px;
+      background: rgba(201,95,73,.10);
+    }
+    .hero-inner,
+    main,
+    .nav-inner,
+    footer {
+      width: min(1180px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+      padding: 5.5rem 0 4.5rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.1rem;
+      color: var(--coral);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 2rem;
+      height: 2px;
+      background: currentColor;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 1.2rem;
+      font-family: "Songti TC", "Noto Serif TC", "PMingLiU", serif;
+      font-size: clamp(3.2rem, 7vw, 6.3rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+    .hero-copy {
+      max-width: 720px;
+      color: #3f5255;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+    }
+    .hero-note {
+      margin-top: 1.7rem;
+      padding: 1rem 1.2rem;
+      border-left: 4px solid var(--coral);
+      border-radius: 0 14px 14px 0;
+      background: rgba(255,255,255,.62);
+      color: #4a5655;
+    }
+    .route-map {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      padding-left: 1.2rem;
+    }
+    .route-map::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 2rem;
+      bottom: 2rem;
+      width: 2px;
+      background: linear-gradient(var(--coral), var(--olive), var(--tea));
+    }
+    .route-stop {
+      position: relative;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.15rem 1.2rem;
+      border: 1px solid rgba(23,50,58,.10);
+      border-radius: 18px;
+      background: rgba(255,253,248,.88);
+      box-shadow: var(--shadow);
+      transform: rotate(-1deg);
+    }
+    .route-stop:nth-child(2) { transform: translateX(18px) rotate(1deg); }
+    .route-stop:nth-child(3) { transform: translateX(4px) rotate(-.5deg); }
+    .route-no {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: white;
+      background: var(--ink);
+      font-weight: 800;
+    }
+    .route-stop strong { display: block; font-size: 1.02rem; }
+    .route-stop span { color: var(--muted); font-size: .86rem; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247,241,229,.93);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      display: flex;
+      gap: .55rem;
+      min-width: max-content;
+      padding: .7rem 0;
+    }
+    .nav a {
+      padding: .55rem .85rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #53605f;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .nav a:hover,
+    .nav a:focus-visible { background: white; color: var(--ink); }
+
+    main { padding: 4.5rem 0 6rem; }
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.72);
+    }
+    .principles h2 {
+      margin-bottom: .55rem;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+    }
+    .principles p { margin-bottom: 0; color: var(--muted); }
+    .principle-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    .principle-item {
+      padding: .8rem .9rem;
+      border-radius: 13px;
+      background: white;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .scene {
+      --accent: var(--coral);
+      --soft: var(--soft-coral);
+      margin-bottom: 5.5rem;
+      scroll-margin-top: 5rem;
+    }
+    .scene.farm { --accent: var(--olive); --soft: var(--soft-green); }
+    .scene.tea { --accent: var(--tea); --soft: var(--soft-tea); }
+    .scene-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 3px solid var(--accent);
+    }
+    .scene-index {
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 3.7rem;
+      line-height: .85;
+      font-style: italic;
+    }
+    .scene-kicker {
+      margin-bottom: .15rem;
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+    }
+    .scene h2 {
+      margin-bottom: 0;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+    }
+    .four-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .cell {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+      padding: 1.55rem 1.6rem 1.45rem;
+      border: 1px solid rgba(23,50,58,.10);
+      border-radius: var(--radius);
+      background: var(--paper-2);
+      box-shadow: 0 8px 26px rgba(44,54,48,.07);
+    }
+    .cell::after {
+      content: attr(data-no);
+      position: absolute;
+      right: -3px;
+      bottom: -31px;
+      color: rgba(23,50,58,.045);
+      font-family: Georgia, serif;
+      font-size: 9rem;
+      line-height: 1;
+      font-style: italic;
+      pointer-events: none;
+    }
+    .cell:nth-child(4) {
+      border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+      background: linear-gradient(145deg, var(--soft), #fffdf8 68%);
+    }
+    .cell-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .7rem;
+      color: var(--accent);
+      font-size: .73rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .cell-label::before {
+      content: attr(data-no);
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      color: white;
+      background: var(--accent);
+      letter-spacing: 0;
+    }
+    .cell h3 {
+      margin-bottom: .75rem;
+      font-size: 1.28rem;
+      line-height: 1.35;
+    }
+    ul { margin: .35rem 0 0; padding-left: 1.2rem; }
+    li { margin-bottom: .45rem; }
+    li::marker { color: var(--accent); }
+    .subhead {
+      margin: 1rem 0 .3rem;
+      color: var(--accent);
+      font-size: .83rem;
+      font-weight: 900;
+    }
+    .quote {
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      background: rgba(255,255,255,.68);
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: 1.02rem;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .tag {
+      padding: .28rem .62rem;
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--soft);
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .summary {
+      padding: 2rem;
+      border-radius: var(--radius);
+      color: white;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .summary h2 {
+      margin-bottom: .55rem;
+      font-family: "Songti TC", "Noto Serif TC", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+    .summary > p { max-width: 850px; color: #dbe5e4; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .summary-card {
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 15px;
+      background: rgba(255,255,255,.07);
+    }
+    .summary-card strong { display: block; color: #f4c977; margin-bottom: .3rem; }
+    .summary-card span { color: #dbe5e4; font-size: .91rem; }
+
+    footer {
+      padding: 0 0 3rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 4rem; }
+      .route-map { padding-left: 0; }
+      .route-map::before { left: 20px; }
+      .route-stop:nth-child(n) { transform: none; }
+      .principles { grid-template-columns: 1fr; padding: 1.35rem; }
+      .four-grid { grid-template-columns: 1fr; }
+      .cell { min-height: auto; }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .hero-inner, main, .nav-inner, footer { width: min(100% - 28px, 1180px); }
+      h1 { font-size: clamp(2.75rem, 16vw, 4.2rem); }
+      .hero-copy { font-size: 1rem; }
+      .route-stop { grid-template-columns: 36px 1fr; padding: 1rem; }
+      .route-no { width: 36px; height: 36px; }
+      main { padding-top: 2.8rem; }
+      .principle-list { grid-template-columns: 1fr; }
+      .scene { margin-bottom: 4rem; }
+      .scene-head { grid-template-columns: 1fr; gap: .5rem; }
+      .scene-index { font-size: 2.8rem; }
+      .cell { padding: 1.25rem 1.2rem; }
+    }
+
+    @media print {
+      .nav, .skip-link { display: none; }
+      body { background: white; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 2rem 0; }
+      .cell, .summary, .principles, .route-stop { box-shadow: none; break-inside: avoid; }
+      .scene { break-before: page; }
+    }
+    .site-home {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 40;
+      padding: .65rem .9rem;
+      border: 1px solid rgba(34,49,58,.12);
+      border-radius: 999px;
+      background: rgba(255,253,249,.94);
+      box-shadow: 0 8px 24px rgba(34,49,58,.14);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+    @media print { .site-home { display: none; } }
+  </style>
+</head>
+<body>
+  <a class="site-home" href="../">← 返回總覽</a>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">New York · 憶師恩影片企劃</div>
+        <h1>廣福組<br>三場景拍攝規劃</h1>
+        <p class="hero-copy">怡伶與攝影師會真的走進總店、農田和茶席，跟著現場夥伴一起做。每個場景整理成四格：場景、體驗、內容，以及拍攝注意與目前缺口。</p>
+        <p class="hero-note">先拍大家真的在做什麼，再從現場聊天慢慢帶出師長理念。日期、人物與授權確認後，才進拍攝通告與畫面清單。</p>
+      </div>
+      <div class="route-map" aria-label="三個拍攝場景">
+        <div class="route-stop">
+          <div class="route-no">1</div>
+          <div><strong>心田總店 ↔ 二店</strong><span>營運、補貨、義工協作、產品開發</span></div>
+        </div>
+        <div class="route-stop">
+          <div class="route-no">2</div>
+          <div><strong>紐約當地小農田</strong><span>農田、取菜、在地合作、回店交接</span></div>
+        </div>
+        <div class="route-stop">
+          <div class="route-no">3</div>
+          <div><strong>心田二店有機茶席</strong><span>茶道、自然互動、與陌生人結緣</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="頁面導覽">
+    <div class="nav-inner">
+      <a href="#principles">共同原則</a>
+      <a href="#scene-store">01 心田總店</a>
+      <a href="#scene-farm">02 有機小農田</a>
+      <a href="#scene-tea">03 二店茶席</a>
+      <a href="#summary">整體關係</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="principles" id="principles">
+      <div>
+        <div class="eyebrow">Field-led approach</div>
+        <h2>拍攝時怎麼進場</h2>
+        <p>先做事，再問問題。怡伶與攝影師從第一次參與的角度進場，問題就跟著手上的工作出現。</p>
+      </div>
+      <div class="principle-list">
+        <div class="principle-item">先做事，再問問題</div>
+        <div class="principle-item">零說明式旁白</div>
+        <div class="principle-item">攝影師邊拍邊幫忙</div>
+        <div class="principle-item">現場以聊天為主</div>
+        <div class="principle-item">保留夥伴自己的說法</div>
+        <div class="principle-item">日期與授權確認後再排通告</div>
+      </div>
+    </section>
+
+    <section class="scene store" id="scene-store">
+      <div class="scene-head">
+        <div class="scene-index">01</div>
+        <div><div class="scene-kicker">STORE · OPERATION · PRODUCT</div><h2>心田總店（連動心田二店）</h2></div>
+      </div>
+      <div class="four-grid">
+        <article class="cell" data-no="1">
+          <div class="cell-label" data-no="1">Scene</div>
+          <h3>在什麼場景</h3>
+          <ul>
+            <li>主要場景是心田總店，也就是心田一店。</li>
+            <li>依真實工作往返總店與二店。</li>
+            <li>包含月初到貨、卸貨、整理、二店叫貨與總店補單出貨。</li>
+            <li>畫面跟著一批貨走：先到總店，再補到二店或交給其他出貨端。</li>
+            <li>加入一項特色產品的內部說明。</li>
+          </ul>
+          <div class="tag-row"><span class="tag">總店後台</span><span class="tag">二店補貨</span><span class="tag">產品開發</span></div>
+        </article>
+        <article class="cell" data-no="2">
+          <div class="cell-label" data-no="2">Experience</div>
+          <h3>可以體驗什麼</h3>
+          <ul>
+            <li>怡伶與攝影師跟義工一起卸貨、搬運、清點與整理。</li>
+            <li>接到二店需求後，協助揀貨、核對、包裝及出貨。</li>
+            <li>了解兩家店如何協調庫存與營運。</li>
+            <li>跟開發者弄清楚商品為什麼要做、怎麼開發，以及包裝為什麼這樣設計。</li>
+            <li>攝影師一邊拍，一邊搬貨、核對；有問題就直接問。</li>
+          </ul>
+        </article>
+        <article class="cell" data-no="3">
+          <div class="cell-label" data-no="3">Content</div>
+          <h3>有什麼樣的內容</h3>
+          <ul>
+            <li>義工共同支撐上下貨與店務。</li>
+            <li>店員承接總店與二店的營運連動。</li>
+            <li>廣福組會先看見需求，再嘗試開發新產品。這正是梁惟茜師姐所說的前瞻與突破。</li>
+            <li>產品和包裝都要講清楚：為什麼做、想帶給顧客什麼，開發時又是怎麼想的。</li>
+            <li>請夥伴邊做邊談，這些工作怎麼用上師父、老師的理念，又怎麼成為修信念恩的方式。</li>
+          </ul>
+          <p class="quote">先跟著一批貨走，再聽做事的人說：自己為什麼願意留下來做。</p>
+        </article>
+        <article class="cell" data-no="4">
+          <div class="cell-label" data-no="4">Attention & gaps</div>
+          <h3>拍攝注意與目前缺口</h3>
+          <div class="subhead">拍攝注意</div>
+          <ul>
+            <li>到貨日期會變動，以梁惟茜師姐通知為準。</li>
+            <li>先確認貨車位置、搬運動線與攝影人員能站的位置。</li>
+            <li>以正常出貨節奏為主；怡伶與攝影師能幫哪些工作，先請店員分配清楚。</li>
+            <li>顧客、物流人員、訂單及個資需取得同意或遮蔽。</li>
+            <li>搬運環境聲大，主要人物需安排收音。</li>
+          </ul>
+          <div class="subhead">目前缺少</div>
+          <ul>
+            <li>確切到貨與兩店運送安排。</li>
+            <li>代表性產品、開發者及可公開的產品歷程。</li>
+            <li>當日義工、店員及運輸人員名單。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene farm" id="scene-farm">
+      <div class="scene-head">
+        <div class="scene-index">02</div>
+        <div><div class="scene-kicker">FARM · LOCAL · CONNECTION</div><h2>紐約當地有機小農田</h2></div>
+      </div>
+      <div class="four-grid">
+        <article class="cell" data-no="1">
+          <div class="cell-label" data-no="1">Scene</div>
+          <h3>在什麼場景</h3>
+          <ul>
+            <li>先與陳慧慈師姐會合，再前往當地小農田地。</li>
+            <li>從路途、農田互動、取菜與裝車一路拍攝。</li>
+            <li>最後回到心田卸貨並與店員交接。</li>
+            <li>畫面跟著一批菜走：從田裡取菜，到心田卸貨、整理和販售。</li>
+          </ul>
+          <div class="tag-row"><span class="tag">農田</span><span class="tag">取菜</span><span class="tag">回店交接</span></div>
+        </article>
+        <article class="cell" data-no="2">
+          <div class="cell-label" data-no="2">Experience</div>
+          <h3>可以體驗什麼</h3>
+          <ul>
+            <li>了解當天取菜品項與心田販售安排。</li>
+            <li>跟慧慈師姐認識農友、田地與當季作物。</li>
+            <li>與農友聊耕作、天氣及近期收成。</li>
+            <li>協助取菜、搬菜、裝車與清點。</li>
+            <li>回心田後協助卸貨、整理及交接。</li>
+          </ul>
+        </article>
+        <article class="cell" data-no="3">
+          <div class="cell-label" data-no="3">Content</div>
+          <h3>有什麼樣的內容</h3>
+          <ul>
+            <li>路上談慧慈師姐為什麼固定做這件事。</li>
+            <li>從兩人的說話和做事方式，看見長期累積的信任。</li>
+            <li>把合作拍清楚：農友種菜，慧慈師姐定期取菜，心田接貨後再交到顧客手上。</li>
+            <li>由慧慈師姐說出在地蔬菜所承接的師長理念。</li>
+            <li>回到店裡後，請店員談慧慈平常怎麼聯絡、取菜和送菜，也說說最感謝她的地方。</li>
+          </ul>
+          <p class="quote">這一段的觀功念恩，就放在店員平常看得見的具體事情上。</p>
+        </article>
+        <article class="cell" data-no="4">
+          <div class="cell-label" data-no="4">Attention & gaps</div>
+          <h3>拍攝注意與目前缺口</h3>
+          <div class="subhead">拍攝注意</div>
+          <ul>
+            <li>先取得農友與私人田地的拍攝同意。</li>
+            <li>確認「有機」或「環境友善」的正式說法。</li>
+            <li>準備天候與收成改變時的替代日期。</li>
+            <li>行車途中由乘客對話，讓駕駛專心開車。</li>
+            <li>進田前先確認鞋具、泥地、日曬與搬運安全。</li>
+          </ul>
+          <div class="subhead">目前缺少</div>
+          <ul>
+            <li>固定取菜日、集合時間、車程與農場位置。</li>
+            <li>農友姓名、合作起點與可公開背景。</li>
+            <li>當週作物、心田接貨人與可拍範圍。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene tea" id="scene-tea">
+      <div class="scene-head">
+        <div class="scene-index">03</div>
+        <div><div class="scene-kicker">TEA · ENCOUNTER · OUTREACH</div><h2>心田二店有機茶席</h2></div>
+      </div>
+      <div class="four-grid">
+        <article class="cell" data-no="1">
+          <div class="cell-label" data-no="1">Scene</div>
+          <h3>在什麼場景</h3>
+          <ul>
+            <li>地點是心田二店。</li>
+            <li>活動是 9 月 20 日的有機茶席，時間待確認。</li>
+            <li>主要人物是茶道講師張詠瑜師姐、來賓與店內夥伴。</li>
+            <li>跟著當天流程走：先準備，再入席品茶，最後邊收拾邊聊天。</li>
+          </ul>
+          <div class="tag-row"><span class="tag">有機茶</span><span class="tag">茶道體驗</span><span class="tag">以茶會友</span></div>
+        </article>
+        <article class="cell" data-no="2">
+          <div class="cell-label" data-no="2">Experience</div>
+          <h3>可以體驗什麼</h3>
+          <ul>
+            <li>跟著講師準備茶具、茶葉與座位。</li>
+            <li>認識當天有機茶的來源與選茶理念。</li>
+            <li>入席學習泡茶、奉茶、接茶與品茶。</li>
+            <li>品茶、等茶和收拾時都可以聊天，現場不另外安排正式訪談。</li>
+            <li>攝影師也坐進茶席，親自接茶與品茶。</li>
+          </ul>
+        </article>
+        <article class="cell" data-no="3">
+          <div class="cell-label" data-no="3">Content</div>
+          <h3>有什麼樣的內容</h3>
+          <ul>
+            <li>張詠瑜師姐可以在備茶或示範時，談自己為什麼學茶、推廣有機茶，以及希望來賓感受到什麼。</li>
+            <li>她也可以就著手上的動作，說明專注、恭敬、觀察他人需要與慈心的關係。</li>
+            <li>第一次接觸團體的來賓，可以先從一杯茶和講師的待人方式認識團體。</li>
+            <li>以聊天了解來賓為何而來、哪一刻最有感受。</li>
+            <li>最後請張詠瑜師姐談，她做茶席時，心裡對師父、老師的修信念是什麼。</li>
+          </ul>
+          <p class="quote">「大家今天也許只是來喝一杯茶。你最希望他們回去時，心裡留下什麼？」</p>
+        </article>
+        <article class="cell" data-no="4">
+          <div class="cell-label" data-no="4">Attention & gaps</div>
+          <h3>拍攝注意與目前缺口</h3>
+          <div class="subhead">拍攝注意</div>
+          <ul>
+            <li>先規劃固定機位、可移動範圍及攝影師座位。</li>
+            <li>互動保持聊天感，不讓來賓承受訪談壓力。</li>
+            <li>非團體來賓入鏡或收音前，先說明播放用途並取得同意。</li>
+            <li>兼顧熱水、茶具、奉茶動線與細微現場收音。</li>
+          </ul>
+          <div class="subhead">目前缺少</div>
+          <ul>
+            <li>9 月 20 日時間、流程、來賓人數與同意方式。</li>
+            <li>講師姓名用字的最後確認。</li>
+            <li>茶品來源、正式說法及講師的學茶時間線。</li>
+            <li>二店茶席區域、機位、供電與店務配合。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="summary" id="summary">
+      <h2>三個場景怎麼接在一起</h2>
+      <p>總店看營運與產品，農田看慧慈師姐怎麼把小農的菜帶回心田，茶席則看張詠瑜師姐怎麼和第一次來的人互動。三個場景都從真實工作開始，再讓夥伴談自己為什麼願意做。</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>總店與二店</strong><span>看廣福如何發現需求、開發產品，再把貨送到二店。</span></div>
+        <div class="summary-card"><strong>當地小農田</strong><span>跟著慧慈師姐跑一趟，看她怎麼把農友的菜帶回心田。</span></div>
+        <div class="summary-card"><strong>二店有機茶席</strong><span>看張詠瑜師姐怎麼用一杯茶和陌生人互動。</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>紐約憶師恩影片企劃 · 廣福組場景規劃 v01 · 2026-08-24</footer>
+</body>
+</html>
