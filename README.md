@@ -7,6 +7,7 @@
 ```text
 /
 ├── index.html
+├── planning-conclusions/index.html
 ├── guangfu/index.html
 ├── elder-care/index.html
 ├── education/index.html
@@ -23,6 +24,7 @@
 
 | 發布頁面 | 正式來源 |
 | --- | --- |
+| `planning-conclusions/index.html` | `../20260827-new-york-filming-planning-conclusions-actions-v01.html` |
 | `guangfu/index.html` | `../20260824-new-york-guangfu-three-scene-filming-plan-v01.html` |
 | `elder-care/index.html` | `../20260824-new-york-elder-care-home-visit-filming-plan-v01.html` |
 | `education/index.html` | `../20260824-new-york-education-culture-two-scene-filming-plan-v01.html` |

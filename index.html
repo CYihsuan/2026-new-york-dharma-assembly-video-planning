@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="2026 紐約法會影片規劃：廣福組、護老組、文教組與淨智組拍攝規劃入口。">
+  <meta name="description" content="2026 紐約法會影片規劃：整體拍攝結論與待辦，以及廣福組、護老組、文教組與淨智組拍攝規劃入口。">
   <title>2026 紐約法會影片規劃</title>
   <style>
     :root {
@@ -181,9 +181,16 @@
       background: var(--teal);
       font-weight: 850;
     }
-    .unit-card:nth-child(2) .number { background: var(--plum); }
-    .unit-card:nth-child(3) .number { background: var(--gold); }
-    .unit-card:nth-child(4) .number { background: var(--rose); }
+    .unit-card:nth-child(3) .number { background: var(--plum); }
+    .unit-card:nth-child(4) .number { background: var(--gold); }
+    .unit-card:nth-child(5) .number { background: var(--rose); }
+    .plan-card {
+      grid-column: 1 / -1;
+      min-height: 300px;
+      background:
+        linear-gradient(135deg, rgba(79,117,116,.11), rgba(255,253,248,.96) 52%, rgba(180,138,77,.12));
+    }
+    .plan-card .number { background: var(--ink); }
     .status {
       padding: .3rem .65rem;
       border-radius: 999px;
@@ -266,7 +273,7 @@
     <div class="hero shell">
       <div class="eyebrow">New York · Video Planning</div>
       <h1>2026 紐約法會<br>影片規劃</h1>
-      <p class="lead">這裡集中廣福、護老、文教與淨智四個單位的體驗式拍攝規劃。每一頁都依場景、體驗、內容、拍攝注意與目前缺口四格整理，方便拍攝團隊與當地夥伴一起確認。</p>
+      <p class="lead">這裡集中最新的拍攝結論與待辦，以及廣福、護老、文教與淨智四個單位的體驗式拍攝規劃，方便拍攝團隊與當地夥伴一起確認。</p>
     </div>
   </header>
 
@@ -274,13 +281,21 @@
     <div class="section-head">
       <div>
         <div class="eyebrow">Planning Index</div>
-        <h2>選擇單位</h2>
-        <p>點進單位頁面，即可閱讀目前的場景規劃與拍攝前待確認事項。</p>
+        <h2>選擇頁面</h2>
+        <p>先看整體拍攝結論與九月待辦，也可以進入各單位頁面閱讀場景規劃。</p>
       </div>
-      <div class="count" aria-label="四個單位">04</div>
+      <div class="count" aria-label="五個入口">05</div>
     </div>
 
     <div class="unit-grid">
+      <a class="unit-card plan-card" data-no="PLAN" href="./planning-conclusions/">
+        <div class="card-top"><span class="number">總</span><span class="status">2026.09.01 更新</span></div>
+        <h3>拍攝規劃結論與待辦</h3>
+        <p>整合護老、文教、廣福、淨智與禪修莊園目前確定的方向、聯絡進度、九月日期、撞期取捨及正式拍攝前待辦。</p>
+        <div class="topics"><span class="topic">最新結論</span><span class="topic">九月排程</span><span class="topic">聯絡分工</span><span class="topic">拍攝備案</span></div>
+        <div class="open">開啟拍攝規劃結論與待辦 <span aria-hidden="true">→</span></div>
+      </a>
+
       <a class="unit-card" data-no="1" href="./guangfu/">
         <div class="card-top"><span class="number">1</span><span class="status">四格規劃</span></div>
         <h3>廣福組</h3>
@@ -308,18 +323,18 @@
       <a class="unit-card" data-no="4" href="./jingzhi/">
         <div class="card-top"><span class="number">4</span><span class="status">四格規劃</span></div>
         <h3>淨智組</h3>
-        <p>怡伶跟著張一帆師兄參加研討班，也跟義工到空山寺或「873」護持，從上課和分工裡看大家怎麼學、怎麼做。</p>
-        <div class="topics"><span class="topic">《廣論》研討班</span><span class="topic">善行點滴</span><span class="topic">場地護持</span></div>
-        <div class="open">開啟淨智組規劃 <span aria-hidden="true">→</span></div>
+        <p>這一頁保留淨智組的初版兩場景四格規劃；目前最新路線已更新為周大雅師姐的實體研討班與 9 月 27 日中秋聯誼。</p>
+        <div class="topics"><span class="topic">初版場景規劃</span><span class="topic">《廣論》研討班</span><span class="topic">最新路線見總覽</span></div>
+        <div class="open">開啟淨智組初版規劃 <span aria-hidden="true">→</span></div>
       </a>
     </div>
 
     <div class="note">
       <strong>目前範圍</strong>
-      <span>本入口目前收錄四個已完成的場景式拍攝規劃。其他單位確認內容後，可以沿用同一層級增加入口，不會改變現有網址。</span>
+      <span>本入口目前收錄一份最新拍攝結論，以及四個已完成的場景式拍攝規劃。後續資料確認後，可以沿用同一層級更新，不會改變現有網址。</span>
     </div>
   </main>
 
-  <footer class="shell">2026 紐約法會影片規劃 · 分享閱讀版 · 2026-08-24</footer>
+  <footer class="shell">2026 紐約法會影片規劃 · 分享閱讀版 · 更新於 2026-09-01</footer>
 </body>
 </html>
